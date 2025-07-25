@@ -1,1 +1,37 @@
 There are 2 ways of estimation one explained in the course is COST BASED OPTIMIZATION but there is another one called as RULE BASED OPTIMIZATION.
+Rule based optimization is an old way of doing where there is following of some rules like use an index in some kind of operations or make a full search in some kind of operations.
+However it is not accurate so oracle moved to cost based optimization.
+
+Cost Based Optimization has some kind of levels ->
+* FIRST_ROWS
+* FIRST_ROWS_N
+* ALL_ROWS
+
+Reason: the aim of optimizer is best throughput.
+Sometimes we do not want to see all the roww sometimes on highly interactive applications like oracle forms, etc. so we look for first few rows immediately.
+The optimizer will return first few rows and on demand can load the other rows.
+
+** By default optimization is set all rows but we can change that but it will change for entire session. **
+
+So if it is set to all rows or first rows the optimizer can decide different operations for a specific action. If it is set to all rows then optimizer returns all rows at a time 
+to memory.
+
+-----------------------------------------------
+Defining the optimization level (such as ALL_ROWS or FIRST_ROWS) in an Oracle execution plan tells the SQL optimizer what kind of performance goal you want for your query:
+
+ALL_ROWS:
+
+The optimizer tries to minimize total resource consumption and return all rows as efficiently as possible.
+Best for batch jobs, reports, or queries where you need the complete result set.
+FIRST_ROWS (n):
+
+The optimizer tries to return the first n rows as quickly as possible, even if the total query takes longer.
+Best for interactive applications or web pages where the user wants to see the first few results quickly.
+In summary:
+Setting the optimization level helps the database choose the best execution plan for your use case—either fastest overall completion (ALL_ROWS) or fastest initial response (FIRST_ROWS).
+----------------------------------------------
+
+But for some we can see in execution plan table or the dbms.xplan that there is optimizer column mentioning analyzed means the statistics are available for that object
+so need to go for dynamic sampling.
+
+**** Dynamic Sampling means taking some candidate rows and generating the statistics based on these rows. ****
