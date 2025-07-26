@@ -1,0 +1,7 @@
+To use Unique index Optimized chooses these options:
+
+* does the sql has all the columns of primary key index or unique key index? If index consists of multiple columns we need all the columns in where clause to activate it.
+* does sql mention the predicates with equality operator or not
+so if i mention < 5 in sql then chance of picking index range scan increases.
+
+select * from employees where empId = 33;
