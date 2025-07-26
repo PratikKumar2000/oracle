@@ -1,0 +1,2 @@
+if dbms server finds that while creating execution plan the statistics are lying then it will create new statistics and update it system with it. We can see that
+as statistics collector node in execution plan.
